@@ -1,0 +1,50 @@
+#pragma once
+
+#include <string>
+#include <raylib.h>
+#include <vector>
+
+using std::string;
+using std::vector;
+
+class Actor;
+class Ball;
+
+class Game
+{
+public:
+	Game(int w, int h, string title, Color clrColor);
+	~Game();
+
+public:
+	int Run();
+
+	int GetWidth() const;
+	int GetHeight() const;
+
+	Ball* GetBall();
+
+private:
+	int m_width;
+	int m_height;
+	string m_title;
+	Color m_clrColor;
+
+	Ball* m_ball;
+	vector<Actor*> m_actors;
+
+
+private:
+	//the function that is called when the game is run for the first time.
+	void BeginPlay();
+
+	//the function that is used for any gameplay logic. called once per frame
+	void Tick(float dt);
+
+	//the function to draw things on screan
+	void Render();
+
+	// the function that is called to clean up any actors or memory in the game.
+	void EndPlay();
+};
+
