@@ -3,6 +3,7 @@
 #include "Paddle.h"
 #include "Brick.h"
 #include "Ball.h"
+#include <ctime>
 
 Game::Game(int w, int h, string title, Color clrColor)
 	:m_width{ w }, m_height{ h }, m_title{ title }, m_clrColor{ clrColor }
@@ -92,6 +93,8 @@ Ball* Game::GetBall()
 
 void Game::BeginPlay()
 {
+	SetRandomSeed(time(nullptr));
+
 	for (Actor* actor : m_actors)
 	{
 		actor->BeginPlay();

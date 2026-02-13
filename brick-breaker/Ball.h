@@ -12,6 +12,8 @@ public:
 	Ball(Game* game);
 
 public:
+	void BeginPlay() override;
+
 	void Tick(float dt) override;
 	void Render() override;
 
